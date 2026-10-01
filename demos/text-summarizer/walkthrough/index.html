@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Text Summarizer – walkthrough</title>
+    <link rel="stylesheet" href="../../../shared/clickthrough/player.css" />
+  </head>
+  <body>
+    <div id="walkthrough"></div>
+    <script>
+      window.WALKTHROUGH = {
+        title: "AI Text Summarizer",
+        subtitle: "From a wall of text to the key points in seconds",
+        steps: [
+          {
+            title: "Too much to read",
+            body:
+              "<p>Every day, teams receive long emails, reports and meeting transcripts.</p>" +
+              "<ul><li>Important details get missed.</li><li>Hours are spent reading instead of acting.</li></ul>",
+            notes: "Ask: how many hours a week does your team spend reading long documents?"
+          },
+          {
+            title: "Paste the text",
+            body:
+              "<p>The user opens a simple web page and pastes any document into the text box.</p>" +
+              "<div class=\"ct-callout\">No training required – if you can copy and paste, you can use it.</div>",
+            notes: "Emphasize simplicity: one box, one button."
+          },
+          {
+            title: "Choose the length",
+            body: "<p>Pick how many sentences the summary should contain – a one-line headline or a short paragraph.</p>"
+          },
+          {
+            title: "Get the summary",
+            body:
+              "<p>In seconds the key points appear below the text.</p>" +
+              "<div class=\"ct-callout\"><strong>Example:</strong> a 5-paragraph customer support ticket becomes " +
+              "“Agents spend too much time reading long tickets. Early pilots show agents resolve tickets faster with AI summaries.”</div>",
+            notes: "The summary keeps the original wording, so it is easy to trust and verify."
+          },
+          {
+            title: "Why it matters",
+            body:
+              "<ul><li><strong>Time saved</strong> on every long document.</li>" +
+              "<li><strong>Faster decisions</strong> because the key points are up front.</li>" +
+              "<li><strong>Extensible</strong>: action items, translation, document upload and more.</li></ul>" +
+              "<p>Ready to try it? Your technical team can deploy it in about 10 minutes.</p>",
+            notes: "Hand off to the technical audience: point them at the demo README."
+          }
+        ]
+      };
+    </script>
+    <script src="../../../shared/clickthrough/player.js"></script>
+  </body>
+</html>
