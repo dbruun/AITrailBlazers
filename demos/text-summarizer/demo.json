@@ -1,0 +1,14 @@
+{
+  "id": "text-summarizer",
+  "title": "AI Text Summarizer",
+  "summary": "Turn long documents, emails and transcripts into short summaries. Runs offline or with Azure OpenAI.",
+  "status": "ready",
+  "owners": ["dbruun"],
+  "tags": ["ai", "summarization", "azure-openai", "python"],
+  "walkthrough": "walkthrough/index.html",
+  "deploy": {
+    "targets": ["local", "docker", "azure-container-apps"],
+    "guide": "infra/README.md"
+  },
+  "prerequisites": ["Python 3.8+ (local)", "Docker (optional)", "Azure subscription (optional)"]
+}

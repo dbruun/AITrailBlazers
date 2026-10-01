@@ -1,0 +1,14 @@
+{
+  "id": "{{DEMO_ID}}",
+  "title": "{{DEMO_TITLE}}",
+  "summary": "One or two sentences describing the business problem this demo solves.",
+  "status": "draft",
+  "owners": ["your-github-handle"],
+  "tags": ["ai"],
+  "walkthrough": "walkthrough/index.html",
+  "deploy": {
+    "targets": ["local"],
+    "guide": "infra/README.md"
+  },
+  "prerequisites": []
+}

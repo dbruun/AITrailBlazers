@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{DEMO_TITLE}} – walkthrough</title>
+    <link rel="stylesheet" href="../../../shared/clickthrough/player.css" />
+  </head>
+  <body>
+    <div id="walkthrough"></div>
+    <script>
+      // Edit the steps below. Put screenshots in ./assets and reference them as "assets/<file>".
+      window.WALKTHROUGH = {
+        title: "{{DEMO_TITLE}}",
+        subtitle: "A click-through walkthrough – no install required",
+        steps: [
+          {
+            title: "The problem",
+            body: "<p>Describe the business problem in plain language.</p>",
+            notes: "Ask the audience if they have experienced this problem."
+          },
+          {
+            title: "The solution",
+            body: "<p>Show what the demo does. Add a screenshot with <code>image: \"assets/step-2.png\"</code>.</p>"
+          },
+          {
+            title: "The outcome",
+            body: "<div class=\"ct-callout\">Summarize the value and the next step for the audience.</div>"
+          }
+        ]
+      };
+    </script>
+    <script src="../../../shared/clickthrough/player.js"></script>
+  </body>
+</html>

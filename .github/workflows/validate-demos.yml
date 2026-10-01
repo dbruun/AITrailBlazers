@@ -1,0 +1,39 @@
+name: Validate demos
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate demo structure and catalog
+        run: python scripts/demos.py validate
+
+      - name: Test repository tooling
+        run: python -m unittest discover -s tests -v
+
+      - name: Run demo tests (Python demos with a tests/ folder)
+        run: |
+          status=0
+          for dir in demos/*/tests; do
+            [ -d "$dir" ] || continue
+            if ls "$dir"/test_*.py >/dev/null 2>&1; then
+              demo="$(dirname "$dir")"
+              echo "::group::$demo"
+              (cd "$demo" && python -m unittest discover -s tests -v) || status=1
+              echo "::endgroup::"
+            fi
+          done
+          exit $status

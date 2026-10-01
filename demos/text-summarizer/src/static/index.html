@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Text Summarizer</title>
+    <style>
+      body { font-family: "Segoe UI", system-ui, sans-serif; max-width: 760px; margin: 32px auto; padding: 0 16px; color: #1b1b1f; }
+      textarea { width: 100%; min-height: 220px; font: inherit; padding: 8px; }
+      button { font: inherit; padding: 8px 20px; background: #0f6cbd; color: #fff; border: 0; border-radius: 6px; cursor: pointer; }
+      #result { margin-top: 16px; padding: 12px 16px; background: #eef5fc; border-left: 4px solid #0f6cbd; white-space: pre-wrap; }
+      .meta { color: #5c6370; font-size: 0.9rem; }
+    </style>
+  </head>
+  <body>
+    <h1>AI Text Summarizer</h1>
+    <p>Paste a long document, email or meeting transcript and get a short summary.</p>
+    <textarea id="text" placeholder="Paste text here..."></textarea>
+    <p>
+      <label>Sentences: <input id="sentences" type="number" min="1" max="10" value="3" /></label>
+      <button id="go" type="button">Summarize</button>
+    </p>
+    <div id="result" hidden></div>
+    <p id="mode" class="meta"></p>
+    <script>
+      document.getElementById("go").addEventListener("click", async function () {
+        var result = document.getElementById("result");
+        var mode = document.getElementById("mode");
+        result.hidden = false;
+        result.textContent = "Summarizing...";
+        mode.textContent = "";
+        try {
+          var response = await fetch("/api/summarize", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              text: document.getElementById("text").value,
+              sentences: Number(document.getElementById("sentences").value) || 3
+            })
+          });
+          var data = await response.json();
+          result.textContent = data.summary || data.error;
+          if (data.mode) {
+            mode.textContent = "Mode: " + data.mode;
+          }
+        } catch (err) {
+          result.textContent = "Request failed: " + err;
+        }
+      });
+    </script>
+  </body>
+</html>
