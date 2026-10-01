@@ -39,7 +39,7 @@ class Handler(BaseHTTPRequestHandler):
             data = json.loads(self.rfile.read(length).decode("utf-8"))
             text = str(data.get("text", "")).strip()
             sentences = max(1, min(MAX_SENTENCES, int(data.get("sentences", 3))))
-        except (ValueError, AttributeError, TypeError):
+        except (ValueError, AttributeError, TypeError, OverflowError):
             self._json(400, {"error": "expected JSON: {\"text\": \"...\", \"sentences\": 3}"})
             return
         if not text:

@@ -170,6 +170,8 @@ def render_catalog(root):
             meta = load_metadata(demo_dir)
         except (ValueError, OSError):
             continue
+        if validate_metadata(meta, demo_dir):
+            continue
         name = demo_dir.name
         tags = ", ".join("`%s`" % t for t in meta.get("tags", []))
         deploy = meta.get("deploy", {}) or {}

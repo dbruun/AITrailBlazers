@@ -61,7 +61,6 @@
   }
 
   var progress = el("div", "ct-progress");
-  progress.setAttribute("role", "tablist");
   var dots = steps.map(function (step, i) {
     var dot = el("button", "ct-dot");
     dot.type = "button";
@@ -207,7 +206,11 @@
     dots.forEach(function (dot, d) {
       dot.classList.toggle("ct-dot-active", d === current);
       dot.classList.toggle("ct-dot-done", d < current);
-      dot.setAttribute("aria-selected", String(d === current));
+      if (d === current) {
+        dot.setAttribute("aria-current", "step");
+      } else {
+        dot.removeAttribute("aria-current");
+      }
     });
   }
 

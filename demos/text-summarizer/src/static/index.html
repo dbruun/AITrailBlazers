@@ -38,7 +38,12 @@
               sentences: Number(document.getElementById("sentences").value) || 3
             })
           });
-          var data = await response.json();
+          var data;
+          try {
+            data = await response.json();
+          } catch (parseError) {
+            data = { error: "Request failed with HTTP " + response.status };
+          }
           result.textContent = data.summary || data.error;
           if (data.mode) {
             mode.textContent = "Mode: " + data.mode;
